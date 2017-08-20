@@ -7,17 +7,22 @@ export default class SearchBar extends Component {
         this.state = { term: ''};
 
         // take the existing function, bind it to 'this' and then replace with existing function.
+        // using binding when call back function refers to 'this'.
+        // You can also use fat arrow functions to avoid binding.
         this.onInputChange = this.onInputChange.bind(this);
     }
 
     onInputChange(event) {
-        console.log(event.target.value);
         this.setState({term: event.target.value})
+    }
+
+    onFormSubmit(event) {
+        event.preventDefault();
     }
 
     render() {
         return (
-            <form className="input-group">
+            <form onSubmit={this.onFormSubmit} className="input-group">
                 <input 
                     placeholder="Get a five-day forecast in your favorite cities"
                     className="form-control"
