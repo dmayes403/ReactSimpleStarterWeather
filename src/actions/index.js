@@ -8,7 +8,7 @@ export const FETCH_WEATHER = 'FETCH_WEATHER';
 export function fetchWeather(city) {
     const url = `${ROOT_URL}&q=${city},us`;
     const request = axios.get(url);
-    console.log(url);
+    // promise is automatically unwrapped once sent as a payload
 
     return {
         type: FETCH_WEATHER,
